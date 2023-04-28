@@ -10,6 +10,8 @@ public interface AccessoryService {
 
     List<ListAccessoryResponse> getAll();
 //sdlfödslfösdlfsd
+
+    //blabla alanşana
     AddAccessoryResponse add(AddAccessoryRequest addAccessoryRequest);
 
 }
