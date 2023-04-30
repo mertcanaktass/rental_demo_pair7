@@ -6,17 +6,16 @@ import com.etiya.rentaldemopair7.business.dtos.responses.accessory.AddAccessoryR
 import com.etiya.rentaldemopair7.business.dtos.responses.accessory.ListAccessoryResponse;
 import com.etiya.rentaldemopair7.core.exceptions.BusinessException;
 import com.etiya.rentaldemopair7.core.utils.mapping.ModelMapperService;
+import com.etiya.rentaldemopair7.core.utils.result.DataResult;
+import com.etiya.rentaldemopair7.core.utils.result.SuccessDataResult;
 import com.etiya.rentaldemopair7.entities.concreate.Accessory;
 import com.etiya.rentaldemopair7.repositories.AccessoryRepository;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-
 public class AccessoryManager implements AccessoryService {
     private AccessoryRepository accessoryRepository;
     private ModelMapperService modelMapperService;
@@ -33,7 +32,7 @@ public class AccessoryManager implements AccessoryService {
     }
 
     @Override
-    public AddAccessoryResponse add(AddAccessoryRequest addAccessoryRequest){
+    public DataResult<AddAccessoryResponse> add(AddAccessoryRequest addAccessoryRequest){
         Accessory addAccessory =
                 accessoryRepository.findByName(addAccessoryRequest.getName());
         if (addAccessory != null)
@@ -60,7 +59,7 @@ public class AccessoryManager implements AccessoryService {
 
         //Auto Mapping
         AddAccessoryResponse response = modelMapperService.forResponse().map(accessory, AddAccessoryResponse.class);
-        return response;
+        return new SuccessDataResult<>(response, "Aksesuar eklendi.");
 
     }
 }

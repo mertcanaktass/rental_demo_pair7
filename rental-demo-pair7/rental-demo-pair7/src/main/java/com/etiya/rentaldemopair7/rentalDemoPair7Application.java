@@ -1,6 +1,8 @@
 package com.etiya.rentaldemopair7;
 
 import com.etiya.rentaldemopair7.core.exceptions.BusinessException;
+import com.etiya.rentaldemopair7.core.utils.result.ErrorResult;
+import com.etiya.rentaldemopair7.core.utils.result.Result;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,9 +33,9 @@ public class rentalDemoPair7Application {
 
     @ExceptionHandler({BusinessException.class})
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String handleBusinessException(BusinessException exception)
+    public Result handleBusinessException(BusinessException exception)
     {
-        return exception.getMessage();
+        return new ErrorResult(exception.getMessage());
     }
 
     @ExceptionHandler({MethodArgumentNotValidException.class})

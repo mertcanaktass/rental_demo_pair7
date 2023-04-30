@@ -4,6 +4,7 @@ import com.etiya.rentaldemopair7.business.abstracts.accessory.AccessoryService;
 import com.etiya.rentaldemopair7.business.dtos.requests.accessory.AddAccessoryRequest;
 import com.etiya.rentaldemopair7.business.dtos.responses.accessory.AddAccessoryResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.accessory.ListAccessoryResponse;
+import com.etiya.rentaldemopair7.core.utils.result.DataResult;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class AccessoriesController {
     }
 
     @PostMapping("")
-    public AddAccessoryResponse add(@Valid @RequestBody AddAccessoryRequest addAccessoryRequest) {
+    public DataResult<AddAccessoryResponse> add(@Valid @RequestBody AddAccessoryRequest addAccessoryRequest) {
        return accessoryService.add(addAccessoryRequest);
 
     }
