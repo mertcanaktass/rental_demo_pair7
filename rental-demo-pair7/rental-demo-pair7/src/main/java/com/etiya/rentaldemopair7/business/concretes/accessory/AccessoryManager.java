@@ -11,19 +11,27 @@ import com.etiya.rentaldemopair7.core.utils.result.SuccessDataResult;
 import com.etiya.rentaldemopair7.entities.concreate.Accessory;
 import com.etiya.rentaldemopair7.repositories.AccessoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class AccessoryManager implements AccessoryService {
+
     private AccessoryRepository accessoryRepository;
+
     private ModelMapperService modelMapperService;
 
+    private MessageSource messageSource;
+
+
     @Autowired
-    public AccessoryManager(AccessoryRepository accessoryRepository, ModelMapperService modelMapperService) {
+    public AccessoryManager(AccessoryRepository accessoryRepository, ModelMapperService modelMapperService, MessageSource messageSource) {
         this.accessoryRepository = accessoryRepository;
         this.modelMapperService = modelMapperService;
+        this.messageSource = messageSource;
     }
 
     @Override
@@ -36,7 +44,7 @@ public class AccessoryManager implements AccessoryService {
         Accessory addAccessory =
                 accessoryRepository.findByName(addAccessoryRequest.getName());
         if (addAccessory != null)
-            throw new BusinessException("Böyle bir aksesuar zaten mevcut!");
+            throw new BusinessException(messageSource.getMessage("accessoryExists", null, LocaleContextHolder.getLocale()));
 
         //Manual Mapping
         //Accessory accessory = new Accessory();
