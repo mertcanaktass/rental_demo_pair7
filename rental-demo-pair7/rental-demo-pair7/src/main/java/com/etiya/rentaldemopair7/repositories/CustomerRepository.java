@@ -17,7 +17,7 @@ public interface CustomerRepository extends JpaRepository<Customer,Integer> {
 
     @Query(value = "select new " +
             "com.etiya.rentaldemopair7.business.dtos.responses.customer.ListCustomerResponse(cu.id, cu.name,cu.mail, cu.gsm,cu.licenceType,ad.id)" +
-            "from Customer cu JOIN Address ad", nativeQuery = false)
+            "from Customer cu JOIN cu.address ad", nativeQuery = false)
     List<ListCustomerResponse> getAll();
 
 

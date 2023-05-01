@@ -1,14 +1,19 @@
 package com.etiya.rentaldemopair7.business.concretes.customer;
 
 import com.etiya.rentaldemopair7.business.abstracts.customer.CustomerService;
+import com.etiya.rentaldemopair7.business.dtos.requests.color.UpdateColorRequest;
 import com.etiya.rentaldemopair7.business.dtos.requests.customer.AddCustomerRequest;
+import com.etiya.rentaldemopair7.business.dtos.requests.customer.UpdateCustomerRequest;
+import com.etiya.rentaldemopair7.business.dtos.responses.color.UpdateColorResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.customer.AddCustomerResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.customer.ListCustomerResponse;
+import com.etiya.rentaldemopair7.business.dtos.responses.customer.UpdateCustomerResponse;
 import com.etiya.rentaldemopair7.core.exceptions.BusinessException;
 import com.etiya.rentaldemopair7.core.utils.mapping.ModelMapperService;
 import com.etiya.rentaldemopair7.core.utils.result.DataResult;
 import com.etiya.rentaldemopair7.core.utils.result.SuccessDataResult;
 import com.etiya.rentaldemopair7.entities.concreate.Accessory;
+import com.etiya.rentaldemopair7.entities.concreate.Color;
 import com.etiya.rentaldemopair7.entities.concreate.Customer;
 import com.etiya.rentaldemopair7.repositories.CustomerRepository;
 import lombok.AllArgsConstructor;
@@ -43,14 +48,26 @@ public class CustomerManager implements CustomerService {
                 customerRepository.findByMail(addCustomerRequest.getMail());
         Customer addCustomer2 =
                 customerRepository.findByGsm(addCustomerRequest.getGsm());
-        if(addCustomer != null  || addCustomer2 != null)
-            throw new BusinessException(messageSource.getMessage("customerExists",null, LocaleContextHolder.getLocale()));
+        if (addCustomer != null || addCustomer2 != null)
+            throw new BusinessException(messageSource.getMessage("customerExists", null, LocaleContextHolder.getLocale()));
 
         Customer customer = modelMapperService.forRequest().map(addCustomerRequest, Customer.class);
         customerRepository.save(customer);
 
 
-        AddCustomerResponse response = modelMapperService.forResponse().map(customer,AddCustomerResponse.class);
+        AddCustomerResponse response = modelMapperService.forResponse().map(customer, AddCustomerResponse.class);
         return new SuccessDataResult<>(response, messageSource.getMessage("successAddCustomer", null, LocaleContextHolder.getLocale()));
+    }
+
+    @Override
+    public DataResult<UpdateCustomerResponse> update(UpdateCustomerRequest updateCustomerRequest) {
+        Customer customer = modelMapperService.forRequest().map(updateCustomerRequest, Customer.class);
+        Customer customer2 = modelMapperService.forRequest().map(updateCustomerRequest, Customer.class);
+        if (customer != null || customer2 != null)
+            throw new BusinessException(messageSource.getMessage("customerExists", null, LocaleContextHolder.getLocale()));
+        customerRepository.save(customer);
+
+        UpdateCustomerResponse response = modelMapperService.forResponse().map(customer, UpdateCustomerResponse.class);
+        return new DataResult<>(response, true, "customerUpdated");
     }
 }

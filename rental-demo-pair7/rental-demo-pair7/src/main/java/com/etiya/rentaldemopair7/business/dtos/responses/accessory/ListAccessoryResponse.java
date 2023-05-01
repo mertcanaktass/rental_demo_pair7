@@ -13,6 +13,6 @@ public class ListAccessoryResponse {
     private String name;
     private int amount;
     private String type;
-    private Discount discount;
+   // private int discount;
 
 }

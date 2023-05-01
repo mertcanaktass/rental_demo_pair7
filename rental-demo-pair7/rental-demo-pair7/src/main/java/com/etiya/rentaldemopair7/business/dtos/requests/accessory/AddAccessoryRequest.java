@@ -17,8 +17,7 @@ public class AddAccessoryRequest {
     @PositiveOrZero(message = "Miktar 0 veya büyük olmalı!")
     private int amount;
 
-    @NotNull(message = "Aksesuar tipi boş bırakılamaz!")
-    @NotBlank(message = "Aksesuar tipi boş bırakılamaz!!!")
+    @NotEmpty(message = "Tip kısmı boş bırakılamaz!")
     @Size(min = 2, max = 20, message = "Aksesuar tipi ismi 2 ile 20 karakter arası olmalıdır!")
     private String type;
 

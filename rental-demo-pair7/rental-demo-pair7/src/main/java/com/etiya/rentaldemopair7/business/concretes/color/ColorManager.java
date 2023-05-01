@@ -1,13 +1,18 @@
 package com.etiya.rentaldemopair7.business.concretes.color;
 
 import com.etiya.rentaldemopair7.business.abstracts.color.ColorService;
+import com.etiya.rentaldemopair7.business.dtos.requests.brand.UpdateBrandRequest;
 import com.etiya.rentaldemopair7.business.dtos.requests.color.AddColorRequest;
+import com.etiya.rentaldemopair7.business.dtos.requests.color.UpdateColorRequest;
+import com.etiya.rentaldemopair7.business.dtos.responses.brand.UpdateBrandResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.color.AddColorResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.color.ListColorResponse;
+import com.etiya.rentaldemopair7.business.dtos.responses.color.UpdateColorResponse;
 import com.etiya.rentaldemopair7.core.exceptions.BusinessException;
 import com.etiya.rentaldemopair7.core.utils.mapping.ModelMapperService;
 import com.etiya.rentaldemopair7.core.utils.result.DataResult;
 import com.etiya.rentaldemopair7.core.utils.result.SuccessDataResult;
+import com.etiya.rentaldemopair7.entities.concreate.Brand;
 import com.etiya.rentaldemopair7.entities.concreate.Color;
 import com.etiya.rentaldemopair7.repositories.ColorRepository;
 import lombok.AllArgsConstructor;
@@ -48,5 +53,16 @@ public class ColorManager implements ColorService {
 
         AddColorResponse response = modelMapperService.forResponse().map(color,AddColorResponse.class);
         return new SuccessDataResult<>(response, messageSource.getMessage("successAddColor", null, LocaleContextHolder.getLocale()));
+    }
+
+    @Override
+    public DataResult<UpdateColorResponse> update(UpdateColorRequest updateColorRequest) {
+        Color color = modelMapperService.forRequest().map(updateColorRequest, Color.class);
+        if(color != null)
+            throw new BusinessException(messageSource.getMessage("colorExists",null, LocaleContextHolder.getLocale()));
+        colorRepository.save(color);
+
+        UpdateColorResponse response = modelMapperService.forResponse().map(color, UpdateColorResponse.class);
+        return new DataResult<>(response, true, "colorUpdated");
     }
 }

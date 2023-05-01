@@ -15,7 +15,7 @@ import java.util.List;
 public class Discount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(name = "id")
     private int id;
 
     @Column(name = "valid_date")
