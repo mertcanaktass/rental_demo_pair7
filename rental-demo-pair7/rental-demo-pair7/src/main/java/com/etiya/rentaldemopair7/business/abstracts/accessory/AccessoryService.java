@@ -16,5 +16,5 @@ public interface AccessoryService {
     DataResult<AddAccessoryResponse> add(AddAccessoryRequest addAccessoryRequest);
 
 
-    DataResult<UpdateAccessoryResponse> updateAccessoryDetails(UpdateAccessoryRequest updateAccessoryRequest);
+    DataResult<UpdateAccessoryResponse> update(UpdateAccessoryRequest updateAccessoryRequest);
 }

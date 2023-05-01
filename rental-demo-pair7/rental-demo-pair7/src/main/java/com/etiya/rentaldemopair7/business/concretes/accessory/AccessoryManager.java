@@ -12,6 +12,7 @@ import com.etiya.rentaldemopair7.core.utils.result.DataResult;
 import com.etiya.rentaldemopair7.core.utils.result.SuccessDataResult;
 import com.etiya.rentaldemopair7.entities.concreate.Accessory;
 import com.etiya.rentaldemopair7.repositories.AccessoryRepository;
+import org.hibernate.sql.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -57,15 +58,13 @@ public class AccessoryManager implements AccessoryService {
     }
 
     @Override
-    public DataResult<UpdateAccessoryResponse> updateAccessoryDetails(UpdateAccessoryRequest updateAccessoryRequest) {
-        return null;
-    }
+    public DataResult<UpdateAccessoryResponse> update(UpdateAccessoryRequest updateAccessoryRequest) {
+        Accessory accessory = modelMapperService.forRequest().map(updateAccessoryRequest, Accessory.class);
+        accessoryRepository.save(accessory);
 
-
-   /* public DataResult<UpdateAccessoryResponse> updateAccessoryDetails(UpdateAccessoryRequest updateAccessoryRequest) {
-        Accessory accessory = accessoryRepository.findById(updateAccessoryRequest.getId());
-        modelMapperService.forResponse().map(accessory, UpdateAccessoryResponse.class);
-        accessoryRepository.save(accessory);*/
+        UpdateAccessoryResponse response = modelMapperService.forResponse().map(accessory, UpdateAccessoryResponse.class);
+        return new DataResult<>(response, true, "accessoryUpdated");
+     }
 
     }
 

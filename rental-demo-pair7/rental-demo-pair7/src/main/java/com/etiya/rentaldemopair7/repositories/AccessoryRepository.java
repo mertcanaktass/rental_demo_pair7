@@ -21,9 +21,4 @@ public interface AccessoryRepository extends JpaRepository<Accessory,Integer> {
     List<ListAccessoryResponse> getAll();
 
 
-    @Query("update Accessory a set a.name = :name, a.amount= :amount, a.type= :type, a.discount=:discount WHERE a.id = :id")
-        void updateAccessoryDetails(@Param("id") int id, @Param("name") String name,
-                                 @Param("amount") int amount, @Param("type") String type,
-                                 @Param("discount") Discount discount);
-
 }

@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ListAccessoryResponse {
     private int id;
     private String name;
@@ -13,11 +15,4 @@ public class ListAccessoryResponse {
     private String type;
     private Discount discount;
 
-    public ListAccessoryResponse(int id, String name, int amount, String type, Discount discount) {
-        this.id = id;
-        this.name = name;
-        this.amount = amount;
-        this.type = type;
-        this.discount = discount;
-    }
 }
