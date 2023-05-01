@@ -53,6 +53,6 @@ public class BranchManager implements BranchService {
         branchRepository.save(branch);
 
         AddBranchResponse response = modelMapperService.forResponse().map(branch, AddBranchResponse.class);
-                return new SuccessDataResult<>(response,"şube eklendi");
+        return new SuccessDataResult<>(response, messageSource.getMessage("successAddBranch", null, LocaleContextHolder.getLocale()));
     }
 }

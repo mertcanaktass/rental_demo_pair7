@@ -10,12 +10,4 @@ import java.util.List;
 
 public interface CarTypeRepository extends JpaRepository<CarType,Integer> {
 
-    @Query("SELECT ct FROM CarType ct")
-    List<CarType> findAllCarType();
-
-    @Query("SELECT ct.id FROM CarType ct")
-    List<Integer> findAllCarTypeId();
-
-    @Query("SELECT ct FROM CarType ct")
-    List<CarType> sortAllCarType(Sort sort);
 }

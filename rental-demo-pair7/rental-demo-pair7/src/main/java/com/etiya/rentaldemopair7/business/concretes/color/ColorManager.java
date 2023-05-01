@@ -47,6 +47,6 @@ public class ColorManager implements ColorService {
         colorRepository.save(color);
 
         AddColorResponse response = modelMapperService.forResponse().map(color,AddColorResponse.class);
-            return new SuccessDataResult<>(response,"renk eklendi");
+        return new SuccessDataResult<>(response, messageSource.getMessage("successAddColor", null, LocaleContextHolder.getLocale()));
     }
 }

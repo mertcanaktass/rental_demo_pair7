@@ -51,6 +51,6 @@ public class CustomerManager implements CustomerService {
 
 
         AddCustomerResponse response = modelMapperService.forResponse().map(customer,AddCustomerResponse.class);
-        return new SuccessDataResult<>(response,"müşteri eklendi");
+        return new SuccessDataResult<>(response, messageSource.getMessage("successAddCustomer", null, LocaleContextHolder.getLocale()));
     }
 }

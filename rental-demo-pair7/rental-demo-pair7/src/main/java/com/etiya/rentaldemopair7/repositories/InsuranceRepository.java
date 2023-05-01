@@ -8,12 +8,5 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface InsuranceRepository extends JpaRepository<Insurance,Integer> {
-    @Query("SELECT ins FROM Insurance ins")
-    List<Insurance> findAllInsurance();
 
-    @Query("SELECT ins.id FROM Insurance ins")
-    List<Integer> findAllInsuranceId();
-
-    @Query("SELECT ins FROM Insurance ins")
-    List<Insurance> sortAllInsurance(Sort sort);
 }

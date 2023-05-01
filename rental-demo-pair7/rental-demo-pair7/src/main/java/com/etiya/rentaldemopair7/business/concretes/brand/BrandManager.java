@@ -49,7 +49,7 @@ public class BrandManager implements BrandService {
         brandRepository.save(brand);
 
         AddBrandResponse response = modelMapperService.forResponse().map(brand, AddBrandResponse.class);
-        return new SuccessDataResult<>(response,"marka eklendi");
+        return new SuccessDataResult<>(response, messageSource.getMessage("successAddBrand", null, LocaleContextHolder.getLocale()));
     }
 
 }

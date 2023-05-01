@@ -8,12 +8,5 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface MaintenanceRepository extends JpaRepository<Maintenance,Integer> {
-    @Query("SELECT m FROM Maintenance m")
-    List<Maintenance> findAllMaintenance();
 
-    @Query("SELECT m.id FROM Maintenance m")
-    List<Integer> findAllMaintenanceId();
-
-    @Query("SELECT m FROM Maintenance m")
-    List<Maintenance> sortAllMaintenance(Sort sort);
 }

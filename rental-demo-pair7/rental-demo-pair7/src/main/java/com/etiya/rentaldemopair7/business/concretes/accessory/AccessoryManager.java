@@ -2,8 +2,10 @@ package com.etiya.rentaldemopair7.business.concretes.accessory;
 
 import com.etiya.rentaldemopair7.business.abstracts.accessory.AccessoryService;
 import com.etiya.rentaldemopair7.business.dtos.requests.accessory.AddAccessoryRequest;
+import com.etiya.rentaldemopair7.business.dtos.requests.accessory.UpdateAccessoryRequest;
 import com.etiya.rentaldemopair7.business.dtos.responses.accessory.AddAccessoryResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.accessory.ListAccessoryResponse;
+import com.etiya.rentaldemopair7.business.dtos.responses.accessory.UpdateAccessoryResponse;
 import com.etiya.rentaldemopair7.core.exceptions.BusinessException;
 import com.etiya.rentaldemopair7.core.utils.mapping.ModelMapperService;
 import com.etiya.rentaldemopair7.core.utils.result.DataResult;
@@ -46,13 +48,24 @@ public class AccessoryManager implements AccessoryService {
             throw new BusinessException(messageSource.getMessage("accessoryExists", null, LocaleContextHolder.getLocale()));
 
 
-        //Auto Mapping
         Accessory accessory = modelMapperService.forRequest().map(addAccessoryRequest, Accessory.class);
         accessoryRepository.save(accessory);
 
-        //Auto Mapping
         AddAccessoryResponse response = modelMapperService.forResponse().map(accessory, AddAccessoryResponse.class);
         return new SuccessDataResult<>(response, messageSource.getMessage("successAddAccessory", null, LocaleContextHolder.getLocale()));
 
     }
-}
+
+    @Override
+    public DataResult<UpdateAccessoryResponse> updateAccessoryDetails(UpdateAccessoryRequest updateAccessoryRequest) {
+        return null;
+    }
+
+
+   /* public DataResult<UpdateAccessoryResponse> updateAccessoryDetails(UpdateAccessoryRequest updateAccessoryRequest) {
+        Accessory accessory = accessoryRepository.findById(updateAccessoryRequest.getId());
+        modelMapperService.forResponse().map(accessory, UpdateAccessoryResponse.class);
+        accessoryRepository.save(accessory);*/
+
+    }
+
