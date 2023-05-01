@@ -18,7 +18,8 @@ public class Discount {
     @Column
     private int id;
 
-    private Date valid_date;
+    @Column(name = "valid_date")
+    private Date validDate;
 
     @OneToMany(mappedBy = "discount")
     private List<Accessory> accessories;

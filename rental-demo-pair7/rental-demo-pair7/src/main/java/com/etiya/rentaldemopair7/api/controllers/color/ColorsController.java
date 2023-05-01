@@ -1,29 +1,36 @@
 package com.etiya.rentaldemopair7.api.controllers.color;
 
 import com.etiya.rentaldemopair7.business.abstracts.color.ColorService;
+import com.etiya.rentaldemopair7.business.dtos.requests.color.AddColorRequest;
+import com.etiya.rentaldemopair7.business.dtos.responses.color.AddColorResponse;
+import com.etiya.rentaldemopair7.business.dtos.responses.color.ListColorResponse;
+import com.etiya.rentaldemopair7.core.utils.result.DataResult;
 import com.etiya.rentaldemopair7.entities.concreate.Color;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/colors")
-@AllArgsConstructor
 public class ColorsController {
+
+    @Autowired
+    public ColorsController(ColorService colorService) {
+        this.colorService = colorService;
+    }
 
     private ColorService colorService;
 
     @GetMapping("")
-    public List<Color> getAll() {
+    public List<ListColorResponse> getAll() {
         return colorService.getAll();
     }
 
     @PostMapping("")
-    public void add(Color color){
-        colorService.add(color);
+    public DataResult<AddColorResponse> add(@Valid @RequestBody AddColorRequest addColorRequest) {
+       return colorService.add(addColorRequest);
     }
 }

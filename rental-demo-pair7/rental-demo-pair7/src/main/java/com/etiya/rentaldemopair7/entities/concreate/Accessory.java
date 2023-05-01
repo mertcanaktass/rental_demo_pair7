@@ -35,4 +35,5 @@ public class Accessory {
     @OneToMany(mappedBy = "accessory")
     @JsonIgnore
     private List<CarAccessory> carAccessories;
+
 }

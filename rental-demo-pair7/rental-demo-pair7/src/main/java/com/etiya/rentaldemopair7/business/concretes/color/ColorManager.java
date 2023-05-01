@@ -1,30 +1,52 @@
 package com.etiya.rentaldemopair7.business.concretes.color;
 
 import com.etiya.rentaldemopair7.business.abstracts.color.ColorService;
+import com.etiya.rentaldemopair7.business.dtos.requests.color.AddColorRequest;
+import com.etiya.rentaldemopair7.business.dtos.responses.color.AddColorResponse;
+import com.etiya.rentaldemopair7.business.dtos.responses.color.ListColorResponse;
+import com.etiya.rentaldemopair7.core.exceptions.BusinessException;
+import com.etiya.rentaldemopair7.core.utils.mapping.ModelMapperService;
+import com.etiya.rentaldemopair7.core.utils.result.DataResult;
+import com.etiya.rentaldemopair7.core.utils.result.SuccessDataResult;
 import com.etiya.rentaldemopair7.entities.concreate.Color;
 import com.etiya.rentaldemopair7.repositories.ColorRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
 public class ColorManager implements ColorService {
     private ColorRepository colorRepository;
+    private ModelMapperService modelMapperService;
+    private MessageSource messageSource;
 
-    @Override
-    public List<Color> getAll() {
-        return colorRepository.findAll();
+
+    public ColorManager(ColorRepository colorRepository, ModelMapperService modelMapperService, MessageSource messageSource) {
+        this.colorRepository = colorRepository;
+        this.modelMapperService = modelMapperService;
+        this.messageSource = messageSource;
     }
 
     @Override
-    public void add(Color color) {
+    public List<ListColorResponse> getAll() {
+        return colorRepository.getAll();
+    }
+
+    @Override
+    public DataResult<AddColorResponse> add(AddColorRequest addColorRequest) {
         Color addColor =
-                colorRepository.findByName(color.getName());
+                colorRepository.findByName(addColorRequest.getName());
         if(addColor != null)
-            return;
+            throw new BusinessException(messageSource.getMessage("colorExists",null, LocaleContextHolder.getLocale()));
+
+
+        Color color = modelMapperService.forRequest().map(addColorRequest,Color.class);
         colorRepository.save(color);
 
+        AddColorResponse response = modelMapperService.forResponse().map(color,AddColorResponse.class);
+            return new SuccessDataResult<>(response,"renk eklendi");
     }
 }

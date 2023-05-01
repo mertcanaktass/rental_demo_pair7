@@ -19,7 +19,6 @@ import java.util.List;
 
 @Service
 public class AccessoryManager implements AccessoryService {
-
     private AccessoryRepository accessoryRepository;
 
     private ModelMapperService modelMapperService;
@@ -46,28 +45,14 @@ public class AccessoryManager implements AccessoryService {
         if (addAccessory != null)
             throw new BusinessException(messageSource.getMessage("accessoryExists", null, LocaleContextHolder.getLocale()));
 
-        //Manual Mapping
-        //Accessory accessory = new Accessory();
-        //accessory.setName(addAccessoryRequest.getName());
-        //accessory.setAmount(addAccessoryRequest.getAmount());
-        //accessory.setType(addAccessoryRequest.getType());
-        //accessoryRepository.save(accessory);
 
         //Auto Mapping
         Accessory accessory = modelMapperService.forRequest().map(addAccessoryRequest, Accessory.class);
         accessoryRepository.save(accessory);
 
-        //Manual Mapping
-        //AddAccessoryResponse response = new AddAccessoryResponse();
-        //response.setId(accessory.getId());
-        //response.setName(accessory.getName());
-        //response.setAmount(accessory.getAmount());
-        //response.setType(accessory.getType());
-        //return response;
-
         //Auto Mapping
         AddAccessoryResponse response = modelMapperService.forResponse().map(accessory, AddAccessoryResponse.class);
-        return new SuccessDataResult<>(response, "Aksesuar eklendi.");
+        return new SuccessDataResult<>(response, messageSource.getMessage("successAddAccessory", null, LocaleContextHolder.getLocale()));
 
     }
 }
