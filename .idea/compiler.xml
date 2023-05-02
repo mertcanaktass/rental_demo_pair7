@@ -7,16 +7,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="rental-demo-pair7" />
+        <module name="rental_demo_pair7" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="rental-demo-pair7" target="17" />
+      <module name="rental_demo_pair7" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="rental-demo-pair7" options="-parameters" />
+      <module name="rental_demo_pair7" options="-parameters" />
     </option>
   </component>
 </project>
