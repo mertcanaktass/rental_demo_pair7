@@ -18,4 +18,7 @@ public interface ColorRepository extends JpaRepository<Color, Integer> {
     @Query(value="Select new com.etiya.rentaldemopair7.business.dtos.responses.color" +
             ".ColorDetailResponse (c.id, c.name) from Color c WHERE c.id=:id")
     ColorDetailResponse getById(int id);
+
+    boolean existsColorById(int id);
+
 }

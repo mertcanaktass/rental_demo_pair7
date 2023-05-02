@@ -9,6 +9,7 @@ import com.etiya.rentaldemopair7.business.dtos.responses.color.ColorDetailRespon
 import com.etiya.rentaldemopair7.business.dtos.responses.color.ListColorResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.color.UpdateColorResponse;
 import com.etiya.rentaldemopair7.core.utils.result.DataResult;
+import com.etiya.rentaldemopair7.core.utils.result.Result;
 
 
 import java.util.List;
@@ -22,4 +23,5 @@ public interface ColorService {
     DataResult<UpdateColorResponse> update(UpdateColorRequest updateColorRequest);
 
     DataResult<ColorDetailResponse> getById(int id);
+    Result colorWithIdShouldExist(int colorId);
 }

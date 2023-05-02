@@ -3,6 +3,7 @@ package com.etiya.rentaldemopair7.business.constants;
 public class Messages {
     public static class Color{
         public static final String ColorExists="colorExists";
+        public static final String ColorDoesNotExistsWithGivenId = "colorDoesNotExistsWithGivenId";
     }
 
     public static class Car{

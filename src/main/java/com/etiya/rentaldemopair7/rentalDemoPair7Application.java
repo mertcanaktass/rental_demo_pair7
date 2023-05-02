@@ -1,6 +1,6 @@
 package com.etiya.rentaldemopair7;
 
-import com.etiya.rentaldemopair7.core.exceptions.BusinessException;
+import com.etiya.rentaldemopair7.core.exceptions.types.BusinessException;
 import com.etiya.rentaldemopair7.core.utils.result.ErrorResult;
 import com.etiya.rentaldemopair7.core.utils.result.Result;
 import org.modelmapper.ModelMapper;
@@ -38,8 +38,9 @@ public class rentalDemoPair7Application {
         messageSource.setBasename("messages");
         return messageSource;
     }
+
     @Bean
-    public LocaleResolver localeResolver(){
+    public LocaleResolver localeResolver() {
         AcceptHeaderLocaleResolver acceptHeaderLocaleResolver = new AcceptHeaderLocaleResolver();
         acceptHeaderLocaleResolver.setDefaultLocale(Locale.US);
 
@@ -51,23 +52,6 @@ public class rentalDemoPair7Application {
         return new ModelMapper();
     }
 
-    @ExceptionHandler({BusinessException.class})
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public Result handleBusinessException(BusinessException exception)
-    {
-        return new ErrorResult(exception.getMessage());
-    }
-
-    @ExceptionHandler({MethodArgumentNotValidException.class})
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Object handleValidationException (MethodArgumentNotValidException exception){
-        Map<String,String> errors = new HashMap<>();
-
-            for (FieldError fieldError : exception.getBindingResult().getFieldErrors()) {
-                errors.put(fieldError.getField(), fieldError.getDefaultMessage());
-            }
-            return errors;
-        }
-    }
+}
 
 

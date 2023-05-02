@@ -12,16 +12,19 @@ import lombok.NoArgsConstructor;
 public class AddCarRequest {
 
 
-    @NotEmpty(message = "Araba modeli boş olamaz")
+    @NotEmpty(message = "{carNotEmpty}")
     private String carModel;
 
-    @Positive(message = "Geçerli bir fiyat giriniz.")
+    @Positive(message = "{carNotEmpty}")
     private int dailyPrice;
 
-    @Positive(message = "Geçerli bir indirim giriniz.")
+    @Positive(message = "{carNotEmpty}")
     private int discount;
 
-    @Positive(message = "Geçerli bir marka giriniz.")
+    @Positive(message = "{carNotEmpty}")
     private int brand;
+
+    @Positive(message = "{carNotEmpty}")
+    private int colorId;
 
 }

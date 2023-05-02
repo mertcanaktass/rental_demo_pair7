@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AddColorRequest {
 
-    @NotNull(message = "renk ismi boş olamaz")
-    @Size(min = 2, max = 20, message = "RENK 2 ile 20 karakter arası olamalıdır!")
+    @NotNull(message = "{colorNotEmpty}")
+    @Size(min = 2, max = 20, message = "{colorMustBeBetween}")
     private String name;
 
 }
