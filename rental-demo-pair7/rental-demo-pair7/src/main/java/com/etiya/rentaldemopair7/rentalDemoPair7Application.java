@@ -70,4 +70,6 @@ public class rentalDemoPair7Application {
         }
     }
 
+    //ozgurbaris2 deneme
+
 
