@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,4 +18,6 @@ public class UpdateBrandRequest {
     @NotEmpty(message = "İsim alanı boş bırakılamaz.")
     @Size(min = 2, max = 20, message = "Marka ismi 2 ile 20 karakter arası olmalıdır!")
     private String name;
+
+    private Date dateAdded;
 }

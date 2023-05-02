@@ -62,9 +62,6 @@ public class CustomerManager implements CustomerService {
     @Override
     public DataResult<UpdateCustomerResponse> update(UpdateCustomerRequest updateCustomerRequest) {
         Customer customer = modelMapperService.forRequest().map(updateCustomerRequest, Customer.class);
-        Customer customer2 = modelMapperService.forRequest().map(updateCustomerRequest, Customer.class);
-        if (customer != null || customer2 != null)
-            throw new BusinessException(messageSource.getMessage("customerExists", null, LocaleContextHolder.getLocale()));
         customerRepository.save(customer);
 
         UpdateCustomerResponse response = modelMapperService.forResponse().map(customer, UpdateCustomerResponse.class);

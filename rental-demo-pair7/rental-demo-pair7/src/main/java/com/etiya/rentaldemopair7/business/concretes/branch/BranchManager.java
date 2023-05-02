@@ -64,8 +64,6 @@ public class BranchManager implements BranchService {
     @Override
     public DataResult<UpdateBranchResponse> update(UpdateBranchRequest updateBranchRequest) {
         Branch branch = modelMapperService.forRequest().map(updateBranchRequest, Branch.class);
-        if (branch != null)
-            throw new BusinessException(messageSource.getMessage("branchExists", null, LocaleContextHolder.getLocale()));
         branchRepository.save(branch);
 
         UpdateBranchResponse response = modelMapperService.forResponse().map(branch, UpdateBranchResponse.class);

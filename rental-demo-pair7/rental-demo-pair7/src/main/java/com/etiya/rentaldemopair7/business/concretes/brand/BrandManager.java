@@ -60,8 +60,6 @@ public class BrandManager implements BrandService {
     @Override
     public DataResult<UpdateBrandResponse> update(UpdateBrandRequest updateBrandRequest) {
         Brand brand = modelMapperService.forRequest().map(updateBrandRequest, Brand.class);
-        if(brand != null)
-            throw new BusinessException(messageSource.getMessage("brandExists", null, LocaleContextHolder.getLocale()));
         brandRepository.save(brand);
 
         UpdateBrandResponse response = modelMapperService.forResponse().map(brand, UpdateBrandResponse.class);

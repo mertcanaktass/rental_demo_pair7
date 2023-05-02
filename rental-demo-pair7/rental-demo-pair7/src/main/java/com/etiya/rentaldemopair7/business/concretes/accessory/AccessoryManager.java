@@ -60,8 +60,6 @@ public class AccessoryManager implements AccessoryService {
     @Override
     public DataResult<UpdateAccessoryResponse> update(UpdateAccessoryRequest updateAccessoryRequest) {
         Accessory accessory = modelMapperService.forRequest().map(updateAccessoryRequest, Accessory.class);
-        if (accessory != null)
-            throw new BusinessException(messageSource.getMessage("accessoryExists", null, LocaleContextHolder.getLocale()));
         accessoryRepository.save(accessory);
 
         UpdateAccessoryResponse response = modelMapperService.forResponse().map(accessory, UpdateAccessoryResponse.class);

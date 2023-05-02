@@ -15,14 +15,14 @@ public interface AccessoryRepository extends JpaRepository<Accessory,Integer> {
 
     Accessory findByName(String name);
 
-    @Query(value = "select new " +
+    /*@Query(value = "select new " +
             "com.etiya.rentaldemopair7.business.dtos.responses.accessory.ListAccessoryResponse(a.id, a.name,a.amount, a.type) " +
             "from Accessory a")
     List<ListAccessoryResponse> getAll();
+*/
 
-
-    /*@Query(value = "select new " +
+    @Query(value = "select new " +
             "com.etiya.rentaldemopair7.business.dtos.responses.accessory.ListAccessoryResponse(a.id, a.name,a.amount, a.type, d.id) " +
             "from Accessory a JOIN a.discount d")
-    List<ListAccessoryResponse> getAll();*/
+    List<ListAccessoryResponse> getAll();
 }

@@ -58,8 +58,6 @@ public class ColorManager implements ColorService {
     @Override
     public DataResult<UpdateColorResponse> update(UpdateColorRequest updateColorRequest) {
         Color color = modelMapperService.forRequest().map(updateColorRequest, Color.class);
-        if(color != null)
-            throw new BusinessException(messageSource.getMessage("colorExists",null, LocaleContextHolder.getLocale()));
         colorRepository.save(color);
 
         UpdateColorResponse response = modelMapperService.forResponse().map(color, UpdateColorResponse.class);
