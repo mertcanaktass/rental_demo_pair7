@@ -7,9 +7,13 @@ import com.etiya.rentaldemopair7.business.dtos.responses.car.AddCarResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.car.CarDetailResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.car.ListCarResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.car.UpdateCarResponse;
+import com.etiya.rentaldemopair7.business.dtos.responses.color.ListColorResponse;
 import com.etiya.rentaldemopair7.core.utils.result.DataResult;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -45,5 +49,13 @@ public class CarsController {
     public DataResult<CarDetailResponse> getById(@PathVariable int id) {
         return carService.getById(id);
     }
+
+    @GetMapping("getWithPagination")
+    public DataResult<Page<ListCarResponse>> getAll(@RequestParam int page, @RequestParam int pageSize){
+        Pageable pageable = PageRequest.of(page, pageSize);
+        return carService.getAllWithPaginatiion(pageable);
+    }
+
+
 }
 

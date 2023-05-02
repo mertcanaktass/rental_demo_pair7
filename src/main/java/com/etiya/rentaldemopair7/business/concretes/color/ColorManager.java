@@ -16,6 +16,8 @@ import com.etiya.rentaldemopair7.core.utils.result.*;
 import com.etiya.rentaldemopair7.entities.concreate.Color;
 import com.etiya.rentaldemopair7.repositories.ColorRepository;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,6 +36,12 @@ public class ColorManager implements ColorService {
     public DataResult<List<ListColorResponse>> getAll() {
         return new SuccessDataResult<>(colorRepository.getAll());
     }
+
+    @Override
+    public DataResult<Page<ListColorResponse>> getAllWithPaginatiion(Pageable pageable) {
+        return new SuccessDataResult<>(colorRepository.getAll(pageable));
+    }
+
     @Override
     public DataResult<AddColorResponse> add(AddColorRequest addColorRequest) {
         checkIfColorWithSameNameExists(addColorRequest.getName());

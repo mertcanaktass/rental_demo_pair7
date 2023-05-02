@@ -10,6 +10,8 @@ import com.etiya.rentaldemopair7.business.dtos.responses.color.ListColorResponse
 import com.etiya.rentaldemopair7.business.dtos.responses.color.UpdateColorResponse;
 import com.etiya.rentaldemopair7.core.utils.result.DataResult;
 import com.etiya.rentaldemopair7.core.utils.result.Result;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 
 import java.util.List;
@@ -17,6 +19,8 @@ import java.util.List;
 public interface ColorService {
 
     DataResult<List<ListColorResponse>> getAll();
+
+    DataResult<Page<ListColorResponse>> getAllWithPaginatiion(Pageable pageable);
 
     DataResult<AddColorResponse> add(AddColorRequest addColorRequest);
 

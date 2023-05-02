@@ -18,6 +18,8 @@ import com.etiya.rentaldemopair7.entities.concreate.Car;
 import com.etiya.rentaldemopair7.repositories.CarRepository;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -40,6 +42,11 @@ public class CarManager implements CarService {
     @Override
     public DataResult<List<ListCarResponse>> getAll() {
         return new SuccessDataResult<>(carRepository.getAll());
+    }
+
+    @Override
+    public DataResult<Page<ListCarResponse>> getAllWithPaginatiion(Pageable pageable) {
+        return new SuccessDataResult<>(carRepository.getAll(pageable));
     }
 
     @Override

@@ -17,6 +17,9 @@ import com.etiya.rentaldemopair7.entities.concreate.Color;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -51,5 +54,11 @@ public class ColorsController {
     @GetMapping("{id}")
     public DataResult<ColorDetailResponse> getById(@PathVariable int id) {
         return colorService.getById(id);
+    }
+
+    @GetMapping("getWithPagination")
+    public DataResult<Page<ListColorResponse>> getAll(@RequestParam int page,@RequestParam int pageSize){
+        Pageable pageable = PageRequest.of(page, pageSize);
+        return colorService.getAllWithPaginatiion(pageable);
     }
 }
