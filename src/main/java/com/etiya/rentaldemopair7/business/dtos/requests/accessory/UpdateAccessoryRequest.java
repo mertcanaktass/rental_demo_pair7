@@ -1,5 +1,6 @@
 package com.etiya.rentaldemopair7.business.dtos.requests.accessory;
 
+import com.etiya.rentaldemopair7.entities.concreate.Color;
 import com.etiya.rentaldemopair7.entities.concreate.Discount;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -27,4 +28,6 @@ public class UpdateAccessoryRequest {
     private String type;
 
     private int discount;
+
+    private Color color;
 }

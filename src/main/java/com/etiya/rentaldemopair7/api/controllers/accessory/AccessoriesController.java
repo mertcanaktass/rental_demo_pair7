@@ -6,6 +6,7 @@ import com.etiya.rentaldemopair7.business.dtos.requests.accessory.UpdateAccessor
 import com.etiya.rentaldemopair7.business.dtos.responses.accessory.AddAccessoryResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.accessory.ListAccessoryResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.accessory.UpdateAccessoryResponse;
+import com.etiya.rentaldemopair7.business.dtos.responses.car.AddCarResponse;
 import com.etiya.rentaldemopair7.core.utils.result.DataResult;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,8 @@ public class AccessoriesController {
 
     @PostMapping("")
     public DataResult<AddAccessoryResponse> add(@Valid @RequestBody AddAccessoryRequest addAccessoryRequest) {
-       return accessoryService.add(addAccessoryRequest);
+        DataResult<AddAccessoryResponse> response = accessoryService.add(addAccessoryRequest);
+        return response;
     }
 
     @PutMapping("")

@@ -27,5 +27,5 @@ public class Brand {
 
     @OneToMany(mappedBy = "brand")
     @JsonIgnore
-    private List<BrandCarType> brandCarTypes;
+    private List<Car> cars;
 }

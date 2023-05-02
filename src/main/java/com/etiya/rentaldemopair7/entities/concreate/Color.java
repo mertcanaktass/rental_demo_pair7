@@ -23,7 +23,7 @@ public class Color {
 
     @OneToMany(mappedBy = "color")
     @JsonIgnore
-    List<CarColor> carColors;
+    List<Car> cars;
 
 
 

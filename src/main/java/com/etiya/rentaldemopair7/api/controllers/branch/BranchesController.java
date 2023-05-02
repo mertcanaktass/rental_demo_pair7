@@ -8,6 +8,7 @@ import com.etiya.rentaldemopair7.business.dtos.responses.accessory.UpdateAccesso
 import com.etiya.rentaldemopair7.business.dtos.responses.branch.AddBranchResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.branch.ListBrachResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.branch.UpdateBranchResponse;
+import com.etiya.rentaldemopair7.business.dtos.responses.car.AddCarResponse;
 import com.etiya.rentaldemopair7.core.utils.result.DataResult;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,8 @@ public class BranchesController {
 
     @PostMapping("")
     public DataResult<AddBranchResponse> add(@Valid @RequestBody AddBranchRequest addBranchRequest)  {
-      return branchService.add(addBranchRequest);
+        DataResult<AddBranchResponse> response = branchService.add(addBranchRequest);
+        return response;
     }
 
     @PutMapping("")

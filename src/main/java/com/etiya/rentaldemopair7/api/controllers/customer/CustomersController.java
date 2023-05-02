@@ -4,6 +4,7 @@ import com.etiya.rentaldemopair7.business.abstracts.customer.CustomerService;
 import com.etiya.rentaldemopair7.business.dtos.requests.color.UpdateColorRequest;
 import com.etiya.rentaldemopair7.business.dtos.requests.customer.AddCustomerRequest;
 import com.etiya.rentaldemopair7.business.dtos.requests.customer.UpdateCustomerRequest;
+import com.etiya.rentaldemopair7.business.dtos.responses.car.AddCarResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.color.UpdateColorResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.customer.AddCustomerResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.customer.ListCustomerResponse;
@@ -30,7 +31,8 @@ public class CustomersController {
 
     @PostMapping("")
     public DataResult<AddCustomerResponse> add(@Valid @RequestBody AddCustomerRequest addCustomerRequest) {
-        return customerService.add(addCustomerRequest);
+        DataResult<AddCustomerResponse> response = customerService.add(addCustomerRequest);
+        return response;
     }
 
     @PutMapping("")
