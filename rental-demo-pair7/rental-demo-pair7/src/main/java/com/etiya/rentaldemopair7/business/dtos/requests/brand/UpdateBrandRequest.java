@@ -1,7 +1,6 @@
 package com.etiya.rentaldemopair7.business.dtos.requests.brand;
 
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UpdateBrandRequest {
 
-    @NotEmpty(message = "Id alanı boş bırakılamaz.")
+    @Positive(message = "Geçerli bir Id giriniz.")
     private int id;
 
     @NotEmpty(message = "İsim alanı boş bırakılamaz.")

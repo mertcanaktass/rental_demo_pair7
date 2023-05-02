@@ -1,6 +1,7 @@
 package com.etiya.rentaldemopair7.business.dtos.requests.color;
 
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UpdateColorRequest {
 
-    @NotEmpty(message = "Id alanı boş bırakılamaz.")
+    @Positive(message = "Geçerli bir Id giriniz.")
     private int id;
 
     @NotEmpty(message = "İsim alanı boş bırakılamaz.")

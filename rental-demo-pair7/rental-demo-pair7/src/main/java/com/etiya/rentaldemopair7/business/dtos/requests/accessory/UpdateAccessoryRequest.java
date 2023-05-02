@@ -1,9 +1,7 @@
 package com.etiya.rentaldemopair7.business.dtos.requests.accessory;
 
 import com.etiya.rentaldemopair7.entities.concreate.Discount;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.PositiveOrZero;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,14 +10,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateAccessoryRequest {
-    @NotEmpty(message = "Id alanı boş bırakılamaz.")
+
+    @Positive(message = "Geçerli bir id girin!")
     private int id;
 
     @NotEmpty(message = "İsim alanı boş bırakılamaz.")
     @Size(min = 2, max = 20, message = "Aksesuar ismi 2 ile 20 karakter arası olmalıdır!")
     private String name;
 
-    @NotEmpty(message = "Miktar alanı boş bırakılamaz.")
+
     @PositiveOrZero(message = "Miktar 0 veya büyük olmalı!")
     private int amount;
 

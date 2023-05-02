@@ -1,8 +1,6 @@
 package com.etiya.rentaldemopair7.business.dtos.requests.customer;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class UpdateCustomerRequest {
 
 
-    @NotEmpty(message = "Id alanı boş olamaz.")
+    @Positive(message = "Geçerli bir Id giriniz.")
     private int id;
 
     @NotEmpty(message = "Müşteri ismi boş olamaz")
@@ -24,12 +22,13 @@ public class UpdateCustomerRequest {
     @Email(message = "Doğru mail formatı giriniz.")
     private String mail;
 
+    @NotEmpty(message = "Gsm boş bırakılamaz!")
     @Size(min = 11, max = 11, message = "Gsm no 11 karakter olmalıdır!")
     private String gsm;
 
     @NotEmpty(message = "Lisans tipi boş bırakılamaz!")
     private String licenceType;
 
-    @NotEmpty(message = "Adres boş bırakılamaz!")
+    @Positive(message = "Geçerli bir addressId giriniz.")
     private int address;
 }
