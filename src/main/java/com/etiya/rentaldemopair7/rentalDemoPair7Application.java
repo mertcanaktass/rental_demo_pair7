@@ -30,28 +30,6 @@ public class rentalDemoPair7Application {
         SpringApplication.run(rentalDemoPair7Application.class, args);
     }
 
-    @Bean
-    public ResourceBundleMessageSource bundleMessageSource() {
-
-        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-
-        messageSource.setBasename("messages");
-        return messageSource;
-    }
-
-    @Bean
-    public LocaleResolver localeResolver() {
-        AcceptHeaderLocaleResolver acceptHeaderLocaleResolver = new AcceptHeaderLocaleResolver();
-        acceptHeaderLocaleResolver.setDefaultLocale(Locale.US);
-
-        return acceptHeaderLocaleResolver;
-    }
-
-    @Bean
-    public ModelMapper getMapper() {
-        return new ModelMapper();
-    }
-
 }
 
 

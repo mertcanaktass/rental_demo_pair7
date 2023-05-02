@@ -22,7 +22,6 @@ import java.util.List;
 @Service
 public class ColorManager implements ColorService {
     private ColorRepository colorRepository;
-    private ColorService colorService;
     private ModelMapperService modelMapperService;
     private MessageService messageService;
 
