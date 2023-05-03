@@ -16,8 +16,8 @@ public interface CarRepository extends JpaRepository<Car,Integer>{
     Car findByCarModel (String carModel);
 
     @Query(value = "select new " +
-            "com.etiya.rentaldemopair7.business.dtos.responses.car.ListCarResponse(c.id, c.carModel, c.dailyPrice, d.id, b.id)" +
-            "from Car c JOIN c.discount d JOIN c.brand b")
+            "com.etiya.rentaldemopair7.business.dtos.responses.car.ListCarResponse(c.id, c.carModel, c.dailyPrice, d.id,i.id, b.id)" +
+            "from Car c JOIN c.discount d JOIN c.brand b JOIN c.insuranceCarList i")
     List<ListCarResponse> getAll();
 
     @Query(value="Select new com.etiya.rentaldemopair7.business.dtos.responses.car" +
@@ -25,8 +25,9 @@ public interface CarRepository extends JpaRepository<Car,Integer>{
             "from Car c WHERE c.id=:id")
     CarDetailResponse getById(int id);
 
-/*    @Query(value = "select new " +
-            "com.etiya.rentaldemopair7.business.dtos.responses.car.ListCarResponse(c.id, c.carModel, c.dailyPrice, d.id, b.id)" +
-            "from Car c JOIN c.discount d JOIN c.brand b")
+
+  /*  @Query(value = "select new " +
+            "com.etiya.rentaldemopair7.business.dtos.responses.car.ListCarResponse(c.id, c.carModel, c.dailyPrice, d.id,i.id, b.id)" +
+            "from Car c JOIN c.discount d JOIN c.brand b JOIN c.insuranceCarList i")
     Page<ListCarResponse> getAll(Pageable pageable);*/
 }

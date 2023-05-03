@@ -3,6 +3,7 @@ package com.etiya.rentaldemopair7.entities.concreate;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -26,7 +27,7 @@ public class Rental {
     private Payment payment;
 
     @Column(name = "order_date")
-    private String orderDate;
+    private Date orderDate;
 
     @OneToMany(mappedBy = "rental")
     private List<Car> cars;

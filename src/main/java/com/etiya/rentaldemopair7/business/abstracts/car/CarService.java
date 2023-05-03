@@ -18,7 +18,7 @@ import java.util.List;
 public interface CarService {
     DataResult<List<ListCarResponse>> getAll();
 
-   // DataResult<Page<ListCarResponse>> getAllWithPaginatiion(Pageable pageable);
+ //   DataResult<Page<ListCarResponse>> getAllWithPaginatiion(Pageable pageable);
 
 
     DataResult<AddCarResponse> add(AddCarRequest addCarRequest);

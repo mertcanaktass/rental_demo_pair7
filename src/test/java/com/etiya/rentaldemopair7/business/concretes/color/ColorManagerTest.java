@@ -66,8 +66,9 @@ class ColorManagerTest {
     void updateWithNonExistingIdShouldThrowException(){
         when(colorRepository.findById(any())).thenReturn(Optional.ofNullable(null));
         UpdateColorRequest request = new UpdateColorRequest(1,"deneme");
+
         assertThrows(NotFoundException.class,()->{
-            colorManager.update(request);
+        colorManager.update(request);
         });
     }
 
