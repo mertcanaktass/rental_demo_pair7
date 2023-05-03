@@ -1,8 +1,6 @@
 package com.etiya.rentaldemopair7.business.dtos.requests.color;
 
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,12 +8,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UpdateColorRequest {
+public class DeleteColorRequest {
 
     @Positive(message = "{colorIdNotEmpty}")
     private int id;
-
-    @NotEmpty(message = "{colorNotEmpty}")
-    @Size(min = 2, max = 20, message = "{colorMustBeBetween}")
-    private String name;
 }

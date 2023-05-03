@@ -8,6 +8,7 @@ public class Messages {
         public static final String ColorAdded= "colorAdded";
 
         public static final String ColorUpdated="colorUpdated";
+        public static final String ColorDeleted="colorDeleted";
     }
 
     public static class Car{

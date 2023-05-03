@@ -3,15 +3,13 @@ package com.etiya.rentaldemopair7.api.controllers.color;
 import com.etiya.rentaldemopair7.business.abstracts.color.ColorService;
 import com.etiya.rentaldemopair7.business.dtos.requests.brand.UpdateBrandRequest;
 import com.etiya.rentaldemopair7.business.dtos.requests.color.AddColorRequest;
+import com.etiya.rentaldemopair7.business.dtos.requests.color.DeleteColorRequest;
 import com.etiya.rentaldemopair7.business.dtos.requests.color.UpdateColorRequest;
 import com.etiya.rentaldemopair7.business.dtos.responses.brand.UpdateBrandResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.car.AddCarResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.car.CarDetailResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.car.ListCarResponse;
-import com.etiya.rentaldemopair7.business.dtos.responses.color.AddColorResponse;
-import com.etiya.rentaldemopair7.business.dtos.responses.color.ColorDetailResponse;
-import com.etiya.rentaldemopair7.business.dtos.responses.color.ListColorResponse;
-import com.etiya.rentaldemopair7.business.dtos.responses.color.UpdateColorResponse;
+import com.etiya.rentaldemopair7.business.dtos.responses.color.*;
 import com.etiya.rentaldemopair7.core.utils.result.DataResult;
 import com.etiya.rentaldemopair7.entities.concreate.Color;
 import jakarta.validation.Valid;
@@ -51,6 +49,11 @@ public class ColorsController {
         return colorService.update(updateColorRequest);
     }
 
+    @DeleteMapping("{id}")
+    public DataResult<DeleteColorResponse> delete(@Valid @RequestBody DeleteColorRequest deleteColorRequest){
+        return colorService.delete(deleteColorRequest);
+    }
+
     @GetMapping("{id}")
     public DataResult<ColorDetailResponse> getById(@PathVariable int id) {
         return colorService.getById(id);
@@ -59,6 +62,6 @@ public class ColorsController {
     @GetMapping("getWithPagination")
     public DataResult<Page<ListColorResponse>> getAll(@RequestParam int page,@RequestParam int pageSize){
         Pageable pageable = PageRequest.of(page, pageSize);
-        return colorService.getAllWithPaginatiion(pageable);
+        return colorService.getAllWithPagination(pageable);
     }
 }

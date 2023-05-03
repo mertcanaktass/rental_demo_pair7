@@ -55,7 +55,9 @@ public class CarManager implements CarService {
         checkIfCarWithSameNameExists(addCarRequest.getCarModel());
 
         Car car = modelMapperService.forResponse().map(addCarRequest,Car.class);
+
         colorWithIdShouldExist(addCarRequest.getColorId());
+
         carRepository.save(car);
         AddCarResponse response = modelMapperService.forResponse().map(car, AddCarResponse.class);
         return new SuccessDataResult<>(response, Messages.Car.CarAdded);
@@ -76,6 +78,7 @@ public class CarManager implements CarService {
     public DataResult<CarDetailResponse> getById(int id) {
             return new SuccessDataResult<>(carRepository.getById(id));
     }
+
 
 
     private void colorWithIdShouldExist(int colorId) {
