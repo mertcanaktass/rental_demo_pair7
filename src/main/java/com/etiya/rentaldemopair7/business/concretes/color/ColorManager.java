@@ -50,7 +50,7 @@ public class ColorManager implements ColorService {
         colorRepository.save(color);
 
         AddColorResponse response = modelMapperService.forResponse().map(color,AddColorResponse.class);
-        return new SuccessDataResult<>(response);
+        return new SuccessDataResult<>(response, Messages.Color.ColorAdded);
     }
 
 
@@ -64,7 +64,7 @@ public class ColorManager implements ColorService {
         colorRepository.save(color1);
 
         UpdateColorResponse response = modelMapperService.forResponse().map(color, UpdateColorResponse.class);
-        return new DataResult<>(response, true, "colorUpdated");
+        return new SuccessDataResult<>(response, Messages.Color.ColorUpdated);
     }
 
 

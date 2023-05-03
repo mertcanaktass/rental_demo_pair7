@@ -32,7 +32,8 @@ public class CarManager implements CarService {
     private ModelMapperService modelMapperService;
     private MessageSource messageSource;
 
-    public CarManager(CarRepository carRepository, ModelMapperService modelMapperService, MessageSource messageSource,ColorService colorService) {
+    public CarManager(CarRepository carRepository, ModelMapperService modelMapperService,
+                      MessageSource messageSource,ColorService colorService) {
         this.carRepository = carRepository;
         this.modelMapperService = modelMapperService;
         this.messageSource = messageSource;
@@ -57,7 +58,7 @@ public class CarManager implements CarService {
         colorWithIdShouldExist(addCarRequest.getColorId());
         carRepository.save(car);
         AddCarResponse response = modelMapperService.forResponse().map(car, AddCarResponse.class);
-        return new SuccessDataResult<>(response, messageSource.getMessage("successAddCar", null, LocaleContextHolder.getLocale()));
+        return new SuccessDataResult<>(response, Messages.Car.CarAdded);
 
     }
 
@@ -67,7 +68,7 @@ public class CarManager implements CarService {
         carRepository.save(car);
 
         UpdateCarResponse response = modelMapperService.forResponse().map(car, UpdateCarResponse.class);
-        return new DataResult<>(response, true,"carUpdated");
+        return new SuccessDataResult<>(response, Messages.Car.CarUpdated);
 
     }
 
