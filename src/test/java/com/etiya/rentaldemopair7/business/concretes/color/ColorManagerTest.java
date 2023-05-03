@@ -1,6 +1,9 @@
 package com.etiya.rentaldemopair7.business.concretes.color;
 
+import com.etiya.rentaldemopair7.business.dtos.requests.color.UpdateColorRequest;
 import com.etiya.rentaldemopair7.business.dtos.responses.color.ListColorResponse;
+import com.etiya.rentaldemopair7.business.dtos.responses.color.UpdateColorResponse;
+import com.etiya.rentaldemopair7.core.exceptions.types.NotFoundException;
 import com.etiya.rentaldemopair7.core.internationalization.MessageManager;
 import com.etiya.rentaldemopair7.core.internationalization.MessageService;
 import com.etiya.rentaldemopair7.core.utils.mapping.ModelMapperService;
@@ -14,7 +17,10 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -43,7 +49,7 @@ class ColorManagerTest {
     @AfterEach
     void tearDown() {
     }
-/*
+
     @Test
     void getAll() {
         List<ListColorResponse> expectedData = new ArrayList<>();
@@ -52,7 +58,17 @@ class ColorManagerTest {
         when(colorRepository.getAll()).thenReturn(expectedData);
         DataResult<List<ListColorResponse>> actualResult= colorManager.getAll();
 
-        assert expectedData.size() == actualResult
-    }*/
+        assert expectedData.get(0).equals(actualResult.getData().get(0));
+        assert expectedData.size() == actualResult.getData().size();
+    }
+
+    @Test
+    void updateWithNonExistingIdShouldThrowException(){
+        when(colorRepository.findById(any())).thenReturn(Optional.ofNullable(null));
+        UpdateColorRequest request = new UpdateColorRequest(1,"deneme");
+        assertThrows(NotFoundException.class,()->{
+            colorManager.update(request);
+        });
+    }
 
 }
