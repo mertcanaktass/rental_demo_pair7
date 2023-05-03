@@ -21,5 +21,5 @@ public class AddAccessoryRequest {
     @Size(min = 2, max = 20, message = "Aksesuar tipi ismi 2 ile 20 karakter arası olmalıdır!")
     private String type;
 
-    private int discount;
+    private int discountId;
 }

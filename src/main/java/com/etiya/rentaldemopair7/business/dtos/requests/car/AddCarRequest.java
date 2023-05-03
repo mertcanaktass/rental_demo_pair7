@@ -19,10 +19,10 @@ public class AddCarRequest {
     private int dailyPrice;
 
     @Positive(message = "{carNotEmpty}")
-    private int discount;
+    private int discountId;
 
     @Positive(message = "{carNotEmpty}")
-    private int brand;
+    private int brandId;
 
     @Positive(message = "{carNotEmpty}")
     private int colorId;

@@ -12,5 +12,5 @@ public class AddAccessoryResponse {
     private String name;
     private int amount;
     private String type;
-    private int discount;
+    private int discountId;
 }

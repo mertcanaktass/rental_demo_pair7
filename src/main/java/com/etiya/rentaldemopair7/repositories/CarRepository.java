@@ -25,8 +25,8 @@ public interface CarRepository extends JpaRepository<Car,Integer>{
             "from Car c WHERE c.id=:id")
     CarDetailResponse getById(int id);
 
-    @Query(value = "select new " +
+/*    @Query(value = "select new " +
             "com.etiya.rentaldemopair7.business.dtos.responses.car.ListCarResponse(c.id, c.carModel, c.dailyPrice, d.id, b.id)" +
             "from Car c JOIN c.discount d JOIN c.brand b")
-    Page<ListCarResponse> getAll(Pageable pageable);
+    Page<ListCarResponse> getAll(Pageable pageable);*/
 }

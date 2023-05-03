@@ -44,10 +44,10 @@ public class CarManager implements CarService {
         return new SuccessDataResult<>(carRepository.getAll());
     }
 
-    @Override
+/*    @Override
     public DataResult<Page<ListCarResponse>> getAllWithPaginatiion(Pageable pageable) {
         return new SuccessDataResult<>(carRepository.getAll(pageable));
-    }
+    }*/
 
     @Override
     public DataResult<AddCarResponse> add(AddCarRequest addCarRequest) {

@@ -11,6 +11,7 @@ public class ListCarResponse {
     private int id;
     private String carModel;
     private int dailyPrice;
-    private int discount;
-    private int brand;
+    private int discountId;
+    private int brandId;
+    private int insuranceCarId;
 }
