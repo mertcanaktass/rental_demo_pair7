@@ -1,6 +1,5 @@
 package com.etiya.rentaldemopair7.repositories;
 
-import com.etiya.rentaldemopair7.business.dtos.responses.accessory.ListAccessoryResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.customer.ListCustomerResponse;
 import com.etiya.rentaldemopair7.entities.concreate.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;

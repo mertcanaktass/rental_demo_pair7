@@ -1,15 +1,10 @@
 package com.etiya.rentaldemopair7.repositories;
 
-
 import com.etiya.rentaldemopair7.business.dtos.responses.car.CarDetailResponse;
-import com.etiya.rentaldemopair7.business.dtos.responses.car.ListCarResponse;
 import com.etiya.rentaldemopair7.entities.concreate.Car;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.util.List;
 
 public interface CarRepository extends JpaRepository<Car,Integer>{
 
