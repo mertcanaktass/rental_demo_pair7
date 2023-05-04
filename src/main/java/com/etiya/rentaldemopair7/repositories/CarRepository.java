@@ -15,11 +15,6 @@ public interface CarRepository extends JpaRepository<Car,Integer>{
 
     Car findByCarModel (String carModel);
 
-    @Query(value = "select new " +
-            "com.etiya.rentaldemopair7.business.dtos.responses.car.ListCarResponse(c.id, c.carModel, c.dailyPrice, d.id,i.id, b.id)" +
-            "from Car c JOIN c.discount d JOIN c.brand b JOIN c.insuranceCarList i")
-    List<ListCarResponse> getAll();
-
     @Query(value="Select new com.etiya.rentaldemopair7.business.dtos.responses.car" +
             ".CarDetailResponse(c.id, c.carModel, c.dailyPrice)" +
             "from Car c WHERE c.id=:id")
@@ -27,8 +22,4 @@ public interface CarRepository extends JpaRepository<Car,Integer>{
 
     boolean existsCarByColorId(int id);
 
-  /*  @Query(value = "select new " +
-            "com.etiya.rentaldemopair7.business.dtos.responses.car.ListCarResponse(c.id, c.carModel, c.dailyPrice, d.id,i.id, b.id)" +
-            "from Car c JOIN c.discount d JOIN c.brand b JOIN c.insuranceCarList i")
-    Page<ListCarResponse> getAll(Pageable pageable);*/
 }

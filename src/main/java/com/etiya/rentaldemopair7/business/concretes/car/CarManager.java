@@ -5,6 +5,7 @@ import com.etiya.rentaldemopair7.business.abstracts.color.ColorService;
 import com.etiya.rentaldemopair7.business.constants.Messages;
 import com.etiya.rentaldemopair7.business.dtos.requests.car.AddCarRequest;
 import com.etiya.rentaldemopair7.business.dtos.requests.car.UpdateCarRequest;
+import com.etiya.rentaldemopair7.business.dtos.responses.accessory.ListAccessoryResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.car.AddCarResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.car.CarDetailResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.car.ListCarResponse;
@@ -12,6 +13,7 @@ import com.etiya.rentaldemopair7.business.dtos.responses.car.UpdateCarResponse;
 import com.etiya.rentaldemopair7.core.exceptions.types.BusinessException;
 import com.etiya.rentaldemopair7.core.utils.mapping.ModelMapperService;
 import com.etiya.rentaldemopair7.core.utils.result.*;
+import com.etiya.rentaldemopair7.entities.concreate.Accessory;
 import com.etiya.rentaldemopair7.entities.concreate.Car;
 import com.etiya.rentaldemopair7.repositories.CarRepository;
 import org.springframework.context.MessageSource;
@@ -23,6 +25,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CarManager implements CarService {
@@ -42,13 +45,13 @@ public class CarManager implements CarService {
 
     @Override
     public DataResult<List<ListCarResponse>> getAll() {
-        return new SuccessDataResult<>(carRepository.getAll());
+        List<Car> cars = carRepository.findAll();
+        List<ListCarResponse> responses = cars.stream()
+                .map(car -> modelMapperService.forResponse().map(car,ListCarResponse.class))
+                .collect(Collectors.toList());
+        return new SuccessDataResult<>(responses,"data listed");
     }
 
-/*    @Override
-    public DataResult<Page<ListCarResponse>> getAllWithPaginatiion(Pageable pageable) {
-        return new SuccessDataResult<>(carRepository.getAll(pageable));
-    }*/
 
     @Override
     public DataResult<AddCarResponse> add(AddCarRequest addCarRequest) {

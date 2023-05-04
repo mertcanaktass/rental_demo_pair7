@@ -49,12 +49,6 @@ public class CarsController {
         return carService.getById(id);
     }
 
-/*    @GetMapping("getWithPagination")
-    public DataResult<Page<ListCarResponse>> getAll(@RequestParam int page, @RequestParam int pageSize) {
-        Pageable pageable = PageRequest.of(page, pageSize);
-        return carService.getAllWithPaginatiion(pageable);
-    }*/
-
 
 }
 
