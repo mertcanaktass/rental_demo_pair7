@@ -2,8 +2,10 @@ package com.etiya.rentaldemopair7.api.controllers.accessory;
 
 import com.etiya.rentaldemopair7.business.abstracts.accessory.AccessoryService;
 import com.etiya.rentaldemopair7.business.dtos.requests.accessory.AddAccessoryRequest;
+import com.etiya.rentaldemopair7.business.dtos.requests.accessory.DeleteAccessoryRequest;
 import com.etiya.rentaldemopair7.business.dtos.requests.accessory.UpdateAccessoryRequest;
 import com.etiya.rentaldemopair7.business.dtos.responses.accessory.AddAccessoryResponse;
+import com.etiya.rentaldemopair7.business.dtos.responses.accessory.DeleteAccessoryResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.accessory.ListAccessoryResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.accessory.UpdateAccessoryResponse;
 import com.etiya.rentaldemopair7.core.utils.result.DataResult;
@@ -40,5 +42,15 @@ public class AccessoriesController {
     @PutMapping("")
     public DataResult<UpdateAccessoryResponse> update(@Valid @RequestBody UpdateAccessoryRequest updateAccessoryRequest){
         return accessoryService.update(updateAccessoryRequest);
+    }
+
+    @GetMapping("{id}")
+    public DataResult<ListAccessoryResponse> getById(@PathVariable int id) {
+        return accessoryService.getById(id);
+    }
+
+    @DeleteMapping("")
+    public DataResult<DeleteAccessoryResponse> delete(@Valid @RequestBody DeleteAccessoryRequest deleteAccessoryRequest){
+        return accessoryService.delete(deleteAccessoryRequest);
     }
 }

@@ -1,7 +1,5 @@
 package com.etiya.rentaldemopair7.business.dtos.requests.accessory;
 
-import com.etiya.rentaldemopair7.entities.concreate.Color;
-import com.etiya.rentaldemopair7.entities.concreate.Discount;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,7 +25,6 @@ public class UpdateAccessoryRequest {
     @Size(min = 2, max = 20, message = "Aksesuar tipi 2 ile 20 karakter arası olmalıdır!")
     private String type;
 
-    private int discount;
-
-    private Color color;
+    @Positive(message= "Geçerli bir discountId giriniz.")
+    private int discountId;
 }

@@ -32,6 +32,8 @@ public class Messages {
 
         public static final String DataListed="dataListed";
 
+        public static final String AccessoryDeleted="accessoryDeleted";
+
     }
 
     public static class Branch{

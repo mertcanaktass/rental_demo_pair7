@@ -60,6 +60,7 @@ public class ColorManager implements ColorService {
 
     @Override
     public DataResult<UpdateColorResponse> update(UpdateColorRequest updateColorRequest) {
+
         checkIfColorWithSameNameExists(updateColorRequest.getName());
 
         Color color = colorRepository.findById(updateColorRequest.getId()).orElseThrow(() -> new NotFoundException(
