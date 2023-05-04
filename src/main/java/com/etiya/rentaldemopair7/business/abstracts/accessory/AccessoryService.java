@@ -7,11 +7,12 @@ import com.etiya.rentaldemopair7.business.dtos.responses.accessory.ListAccessory
 import com.etiya.rentaldemopair7.business.dtos.responses.accessory.UpdateAccessoryResponse;
 import com.etiya.rentaldemopair7.core.utils.result.DataResult;
 
+import javax.xml.crypto.Data;
 import java.util.List;
 
 public interface AccessoryService {
 
-    List<ListAccessoryResponse> getAll();
+    DataResult<List<ListAccessoryResponse>> getAll();
 
     DataResult<AddAccessoryResponse> add(AddAccessoryRequest addAccessoryRequest);
 

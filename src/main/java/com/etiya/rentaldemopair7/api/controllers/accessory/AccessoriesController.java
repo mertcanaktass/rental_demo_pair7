@@ -28,7 +28,7 @@ public class AccessoriesController {
     private AccessoryService accessoryService;
 
     @GetMapping("")
-    public List<ListAccessoryResponse> getAll(){
+    public DataResult<List<ListAccessoryResponse>> getAll(){
         return accessoryService.getAll();
     }
 
