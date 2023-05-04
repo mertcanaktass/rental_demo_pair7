@@ -20,7 +20,7 @@ import java.util.List;
 public interface CarService {
     DataResult<List<ListCarResponse>> getAll();
 
- //   DataResult<Page<ListCarResponse>> getAllWithPaginatiion(Pageable pageable);
+ //   DataResult<Page<ListCarResponse>> getAllWithPagination(Pageable pageable);
 
 
     DataResult<AddCarResponse> add(AddCarRequest addCarRequest);
@@ -28,6 +28,8 @@ public interface CarService {
     DataResult<UpdateCarResponse> update(UpdateCarRequest updateCarRequest);
 
     DataResult<CarDetailResponse> getById(int id);
+
+    Result carWithColorIdShouldNotExist(int carId);
 
 
 }

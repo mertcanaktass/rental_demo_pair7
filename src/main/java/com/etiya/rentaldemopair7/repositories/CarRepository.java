@@ -25,6 +25,7 @@ public interface CarRepository extends JpaRepository<Car,Integer>{
             "from Car c WHERE c.id=:id")
     CarDetailResponse getById(int id);
 
+    boolean existsCarByColorId(int id);
 
   /*  @Query(value = "select new " +
             "com.etiya.rentaldemopair7.business.dtos.responses.car.ListCarResponse(c.id, c.carModel, c.dailyPrice, d.id,i.id, b.id)" +

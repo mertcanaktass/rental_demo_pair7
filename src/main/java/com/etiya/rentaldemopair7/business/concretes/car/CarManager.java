@@ -11,12 +11,11 @@ import com.etiya.rentaldemopair7.business.dtos.responses.car.ListCarResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.car.UpdateCarResponse;
 import com.etiya.rentaldemopair7.core.exceptions.types.BusinessException;
 import com.etiya.rentaldemopair7.core.utils.mapping.ModelMapperService;
-import com.etiya.rentaldemopair7.core.utils.result.DataResult;
-import com.etiya.rentaldemopair7.core.utils.result.Result;
-import com.etiya.rentaldemopair7.core.utils.result.SuccessDataResult;
+import com.etiya.rentaldemopair7.core.utils.result.*;
 import com.etiya.rentaldemopair7.entities.concreate.Car;
 import com.etiya.rentaldemopair7.repositories.CarRepository;
 import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,6 +31,7 @@ public class CarManager implements CarService {
     private ModelMapperService modelMapperService;
     private MessageSource messageSource;
 
+    @Lazy
     public CarManager(CarRepository carRepository, ModelMapperService modelMapperService,
                       MessageSource messageSource,ColorService colorService) {
         this.carRepository = carRepository;
@@ -79,6 +79,14 @@ public class CarManager implements CarService {
             return new SuccessDataResult<>(carRepository.getById(id));
     }
 
+
+    @Override
+    public Result carWithColorIdShouldNotExist(int carId) {
+        boolean isCarExists = carRepository.existsCarByColorId(carId);
+        if (!isCarExists)
+            return new SuccessResult();
+        return new ErrorResult();
+    }
 
 
     private void colorWithIdShouldExist(int colorId) {

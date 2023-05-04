@@ -28,6 +28,6 @@ public class AddCustomerRequest {
     private String licenceType;
 
     @NotEmpty(message = "Adres boş bırakılamaz!")
-    private Address address;
+    private String address;
 
 }

@@ -1,5 +1,6 @@
 package com.etiya.rentaldemopair7.business.concretes.color;
 
+import com.etiya.rentaldemopair7.business.abstracts.car.CarService;
 import com.etiya.rentaldemopair7.business.abstracts.color.ColorService;
 import com.etiya.rentaldemopair7.business.constants.Messages;
 import com.etiya.rentaldemopair7.business.dtos.requests.color.AddColorRequest;
@@ -13,6 +14,7 @@ import com.etiya.rentaldemopair7.core.utils.mapping.ModelMapperService;
 import com.etiya.rentaldemopair7.core.utils.result.*;
 import com.etiya.rentaldemopair7.entities.concreate.Color;
 import com.etiya.rentaldemopair7.repositories.ColorRepository;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -24,10 +26,14 @@ public class ColorManager implements ColorService {
     private ModelMapperService modelMapperService;
     private MessageService messageService;
 
-    public ColorManager(ColorRepository colorRepository, ModelMapperService modelMapperService, MessageService messageService) {
+    private CarService carService;
+
+    public ColorManager(ColorRepository colorRepository, ModelMapperService modelMapperService,
+                        MessageService messageService, CarService carService) {
         this.colorRepository = colorRepository;
         this.modelMapperService = modelMapperService;
         this.messageService = messageService;
+        this.carService = carService;
     }
 
     @Override
@@ -68,6 +74,7 @@ public class ColorManager implements ColorService {
 
     public DataResult<DeleteColorResponse> delete(DeleteColorRequest deleteColorRequest) {
         colorWithIdShouldExist(deleteColorRequest.getId());
+        carWithColorIdShouldNotExist(deleteColorRequest.getId());
 
         Color color = modelMapperService.forRequest().map(deleteColorRequest, Color.class);
         colorRepository.delete(color);
@@ -95,5 +102,12 @@ public class ColorManager implements ColorService {
                 colorRepository.findByName(colorName);
         if (addColor != null)
             throw new BusinessException(messageService.getMessage(Messages.Color.ColorExists));
+    }
+
+    private void carWithColorIdShouldNotExist(int carId) {
+        Result carExists = carService.carWithColorIdShouldNotExist(carId);
+        if (!carExists.isSuccess()){
+            throw new BusinessException(Messages.Color.CarWithColorIdShouldNotExist);
+    }
     }
 }

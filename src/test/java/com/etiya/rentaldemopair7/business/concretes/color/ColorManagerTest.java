@@ -33,12 +33,14 @@ class ColorManagerTest {
     MessageService messageService;
     ColorManager colorManager;
 
+    CarService carService;
+
 
     @BeforeEach
     void setUp() {
         messageService  =  new MessageManager(getBundleMessageSource());
         colorRepository = mock(ColorRepository.class);
-        colorManager = new ColorManager(colorRepository,modelMapperService,messageService);
+        colorManager = new ColorManager(colorRepository,modelMapperService,messageService, carService);
     }
 
     public ResourceBundleMessageSource getBundleMessageSource(){

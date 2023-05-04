@@ -9,6 +9,8 @@ public class Messages {
 
         public static final String ColorUpdated="colorUpdated";
         public static final String ColorDeleted="colorDeleted";
+
+        public static final String CarWithColorIdShouldNotExist= "carWithColorIdShouldNotExist";
     }
 
     public static class Car{
