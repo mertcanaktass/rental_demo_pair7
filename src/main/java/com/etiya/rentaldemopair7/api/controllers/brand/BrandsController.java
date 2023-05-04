@@ -1,10 +1,8 @@
 package com.etiya.rentaldemopair7.api.controllers.brand;
 
 import com.etiya.rentaldemopair7.business.abstracts.brand.BrandService;
-import com.etiya.rentaldemopair7.business.dtos.requests.branch.UpdateBranchRequest;
 import com.etiya.rentaldemopair7.business.dtos.requests.brand.AddBrandRequest;
 import com.etiya.rentaldemopair7.business.dtos.requests.brand.UpdateBrandRequest;
-import com.etiya.rentaldemopair7.business.dtos.responses.branch.UpdateBranchResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.brand.AddBrandResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.brand.ListBrandResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.brand.UpdateBrandResponse;

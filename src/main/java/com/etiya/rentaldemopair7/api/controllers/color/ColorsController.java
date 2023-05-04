@@ -1,19 +1,12 @@
 package com.etiya.rentaldemopair7.api.controllers.color;
 
 import com.etiya.rentaldemopair7.business.abstracts.color.ColorService;
-import com.etiya.rentaldemopair7.business.dtos.requests.brand.UpdateBrandRequest;
 import com.etiya.rentaldemopair7.business.dtos.requests.color.AddColorRequest;
 import com.etiya.rentaldemopair7.business.dtos.requests.color.DeleteColorRequest;
 import com.etiya.rentaldemopair7.business.dtos.requests.color.UpdateColorRequest;
-import com.etiya.rentaldemopair7.business.dtos.responses.brand.UpdateBrandResponse;
-import com.etiya.rentaldemopair7.business.dtos.responses.car.AddCarResponse;
-import com.etiya.rentaldemopair7.business.dtos.responses.car.CarDetailResponse;
-import com.etiya.rentaldemopair7.business.dtos.responses.car.ListCarResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.color.*;
 import com.etiya.rentaldemopair7.core.utils.result.DataResult;
-import com.etiya.rentaldemopair7.entities.concreate.Color;
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

@@ -1,12 +1,8 @@
 package com.etiya.rentaldemopair7.api.controllers.rental;
 
 import com.etiya.rentaldemopair7.business.abstracts.rental.RentalService;
-import com.etiya.rentaldemopair7.business.dtos.requests.car.AddCarRequest;
-import com.etiya.rentaldemopair7.business.dtos.requests.car.UpdateCarRequest;
 import com.etiya.rentaldemopair7.business.dtos.requests.rental.AddRentalRequest;
 import com.etiya.rentaldemopair7.business.dtos.requests.rental.UpdateRentalRequest;
-import com.etiya.rentaldemopair7.business.dtos.responses.car.AddCarResponse;
-import com.etiya.rentaldemopair7.business.dtos.responses.car.UpdateCarResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.rental.AddRentalResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.rental.UpdateRentalResponse;
 import com.etiya.rentaldemopair7.core.utils.result.DataResult;

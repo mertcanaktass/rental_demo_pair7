@@ -6,7 +6,6 @@ import com.etiya.rentaldemopair7.business.dtos.requests.accessory.UpdateAccessor
 import com.etiya.rentaldemopair7.business.dtos.responses.accessory.AddAccessoryResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.accessory.ListAccessoryResponse;
 import com.etiya.rentaldemopair7.business.dtos.responses.accessory.UpdateAccessoryResponse;
-import com.etiya.rentaldemopair7.business.dtos.responses.car.AddCarResponse;
 import com.etiya.rentaldemopair7.core.utils.result.DataResult;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
